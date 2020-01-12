@@ -14,9 +14,15 @@
 #   about_triangle_project_2.rb
 #
 def triangle(a, b, c)
-  if (a == b and b == c)
+  if a <= 0 or b <= 0 or c <= 0
+    fail TriangleError, "Triangle sides must be more than 0"
+  elsif a + b <= c or b + c <= a or a + c <= b
+    fail TriangleError, "Any two sides of a triangle must be larger than the third side"
+  end
+
+  if a == b and b == c
     :equilateral
-  elsif (a == b or a == c or b == c)
+  elsif a == b or a == c or b == c
     :isosceles
   else
     :scalene
